@@ -1,4 +1,5 @@
 import Image from "next/image";
+import FloatingFaq from "./FloatingFaq";
 
 type IconName =
   | "home"
@@ -9,13 +10,11 @@ type IconName =
   | "compare"
   | "document"
   | "check"
-  | "phone"
   | "mail"
   | "arrow";
 
 const company = {
-  phone: "0403434845",
-  email: "hello@skyrisesolutions.com.au",
+  email: "info@thevaultt.com.au",
   location: "1 Shortland Ave, Strathfield NSW 2135",
 };
 
@@ -88,7 +87,7 @@ const faqs = [
   {
     question: "Can you help clients outside Sydney?",
     answer:
-      "Yes. The process can be handled by phone, email and video meeting for clients across Australia, subject to service coverage and lending requirements.",
+      "Yes. The process can be handled by email and video meeting for clients across Australia, subject to service coverage and lending requirements.",
   },
 ];
 
@@ -161,7 +160,6 @@ function Icon({ name }: { name: IconName }) {
         <path d="m8 12 2.5 2.5L16 9" />
       </>
     ),
-    phone: <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z" />,
     mail: (
       <>
         <rect x="3" y="5" width="18" height="14" rx="2" />
@@ -183,7 +181,7 @@ function Logo() {
   return (
     <a className="logo" href="#top" aria-label="SkyRise Solutions home">
       <Image
-        src="/skyrise_logo.jpg"
+        src="/skyrise_logo.png"
         alt="SkyRise Solutions"
         width={58}
         height={58}
@@ -386,9 +384,6 @@ export default function Home() {
             <a className="button button-white" href={`mailto:${company.email}`}>
               Email our team <Icon name="arrow" />
             </a>
-            <a className="contact-line" href={`tel:${company.phone.replace(/\s/g, "")}`}>
-              <Icon name="phone" /><span><small>Call us</small>{company.phone}</span>
-            </a>
           </div>
         </div>
       </section>
@@ -408,7 +403,6 @@ export default function Home() {
           </div>
           <div>
             <h3>Contact</h3>
-            <a href={`tel:${company.phone.replace(/\s/g, "")}`}>{company.phone}</a>
             <a href={`mailto:${company.email}`}>{company.email}</a>
             <span>{company.location}</span>
           </div>
@@ -421,11 +415,12 @@ export default function Home() {
         </div>
         <div className="container compliance" id="legal-placeholder">
           <p>
-            <strong>Compliance placeholder — replace before publishing:</strong> SkyRise Solutions Pty Ltd · ABN 15 677 459 657 · Australian Credit Licence / Credit Representative No. [INSERT NUMBER] · Authorised under [INSERT LICENSEE NAME AND ACL] · AFCA membership details [INSERT]. Credit services and lender panel details are subject to the company&apos;s approved Credit Guide.
+            <strong>Compliance placeholder — replace before publishing:</strong> SkyRise Solutions Pty Ltd · Australian Credit Licence / Credit Representative No. [INSERT NUMBER] · Authorised under [INSERT LICENSEE NAME AND ACL] · AFCA membership details [INSERT]. Credit services and lender panel details are subject to the company&apos;s approved Credit Guide.
           </p>
           <div><span>© {new Date().getFullYear()} SkyRise Solutions.</span><span>Website concept v1.0</span></div>
         </div>
       </footer>
+      <FloatingFaq email={company.email} />
     </main>
   );
 }
